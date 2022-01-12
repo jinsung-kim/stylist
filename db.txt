@@ -1,7 +1,51 @@
-HATS/ACCESSORIES
+CURRENT WARDROBE
+HAT
+"Stussy Beanie" Black/White Stussy,Nike Warm,Cold
+"Yankees Cap NavyBlue/White 47,Yankees Warm,Cold
 
-TOPS
+OUTERWEAR
+"Carhartt WIP Detroit Chore Jacket" Tan CarharttWIP Cold
+"Helmut Lang Lava Logo Hoodie" Red/Black HelmutLang Warm,Cold
+"Helmut Lang Taxi Logo Hoodie" White/Black HelmutLang Warm,Cold
+"Russell Grey Blank Hoodie" Grey NoBrand Warm,Cold
+"Black Blank Hoodie" Black NoBrand Warm,Cold
+"North Face Fleece Anorak" Brown/Green TheNorthFace Cold
+"North Face Rain Jacket" Black TheNorthFace Cold
+"Uniqlo Tan Turtleneck" Tan Uniqlo Warm,Cold
+"Uniqlo Black Turtleneck" Black Uniqlo Warm,Cold
+"Yeezy Gap Black Hoodie" Black Yeezy/Gap Warm,Cold
 
-BOTTOMS
+TOP
+"Stussy Our Legacy White T Shirt" White/Black Stussy,OurLegacy Warm,Cold
+"Stussy New York Black T Shirt" Black/White Stussy Warm,Cold
+"Stussy New York White T Shirt" White/Black Stussy Warm,Cold
+"Stussy Logo Navy Blue T Shirt" NavyBlue/White Stussy Warm,Cold
+"Blank White T Shirt" White NoBrand Warm,Cold
+"Blank Black T Shirt" Black NoBrand Warm,Cold
+"Saturdays NYC White T Shirt" White Saturdays Warm,Cold
+"Saturdays NYC Black T Shirt" Black Saturdays Warm,Cold
+
+PANT
+"517 Levis Blue Orange Tab" LightBlue Levis Warm,Cold
+"517 Levis Dark Blue" DarkBlue Levis Warm,Cold
+"505 Levis Light Blue" LightBlue Levis Warm,Cold
+"Dickies Black Double Knee" Black Dickies Warm,Cold
+"Dickies Grey Double Knee" Grey Dickies Warm,Cold
 
 SHOES
+"Suicoke White Moto-Cab" White Suicoke Warm
+"Suicoke Black Mura-V" Black Suicoke Warm
+"Nike White Air Force 1" White Nike Warm,Cold
+"Nike Grey Vapormax" Grey/White Nike Warm,Cold
+"Vans Blue Old School" Blue/White Vans Warm
+"Diemme Biege Duck Boots" Brown Diemme Cold
+"Doc Martens All Black 1460" Black DocMartens Warm,Cold
+"Undercover Brown Derbies" Brown Undercover/GU Warm,Cold
+"New Balance Grey 990v5" Grey/White NewBalance Warm,Cold
+
+RULESET
+BRANDS
+
+COLORSETS
+
+WEATHER
