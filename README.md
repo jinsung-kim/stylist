@@ -26,7 +26,7 @@ to trust my judgment, my ruleset could easily be fit into your db.txt file.
 
 #### db.txt Format
 
-Take a look at the file there by default (my current rotation) to see the basic formatting
+Take a look at the file there by default (my current rotation) to see the basic formatting. </br>
 Generally:
 
 ```
@@ -35,22 +35,25 @@ Generally:
 ```
 
 Note that you can have only one color, brand, or only either cold or warm. </br>
-You cannot have more than two colors (for now), and a collaboration can only be up to two pieces.
+You cannot have more than two colors (for now), and a collaboration can only be up to two pieces. </br>
 All items are to use a capitalized letter followed by lowercase, and in the case that a brand has a space,
-simply negate that space. In a future version - this will be fixed to make it easier to load data in.
+simply negate that space. </br>
+In a future version - this will be fixed to make it easier to load data in. </br>
 Also note that the order of the colors matters, Black/White is different from White/Black.
 
-HAT
-Item 1 ...
-Item 2 ...
+There are five categories currently accepted:
 
-OUTERWEAR
+HAT </br>
+Item 1 ... </br>
+Item 2 ... </br>
 
-TOP
+OUTERWEAR </br>
 
-PANT
+TOP </br>
 
-SHOES
+PANT </br>
+
+SHOES </br>
 
 #### ruleset.txt Format
 
