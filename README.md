@@ -11,7 +11,7 @@ Input closet -> Run algorithm -> Get outfits for the day
 ### Ex:
 
 ```
-The weather is 57 degrees - warm enough for most clothes. I recommend one of the following: <br />
+The weather is 57 degrees - warm enough for most clothes. I recommend one of the following:
 Stussy Our Legacy T Shirt, 517 Orange Tabs, Nike White Air Forces
 Yeezy Gap Black Hoodie, Black Blank T Shirt, Dickies Black Double Knee, Suicoke Mura-V Slides
 Helmut Lang Lava Logo Hoodie, White Blank T Shirt, Dickies Black Double Knee, Doc Marten Black 1461
