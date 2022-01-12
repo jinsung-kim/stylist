@@ -1,10 +1,9 @@
 import unittest
 import sys
 import os
-from models.models import ClothingItem
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-# from models.models import User, Pet, Species, Coordinate
+from models.models import ClothingItem
 
 
 class TestUser(unittest.TestCase):
@@ -20,6 +19,31 @@ class TestUser(unittest.TestCase):
             "Warm,Cold",
             "HAT",
         )
+
+        self.hat1_again = ClothingItem(
+            "Stussy Beanie",
+            "Black/White",
+            "Stussy",
+            "Warm,Cold",
+            "HAT",
+        )
+
+        self.hat1_again_in_white = ClothingItem(
+            "Stussy Beanie",
+            "White/Black",
+            "Stussy",
+            "Warm,Cold",
+            "HAT",
+        )
+
+        self.hat1_different_brand = ClothingItem(
+            "Stussy Beanie",
+            "White/Black",
+            "Stussy",
+            "Warm,Cold",
+            "HAT",
+        )
+
         self.hat2 = ClothingItem(
             "Supreme Cap",
             "Red/White",
@@ -45,15 +69,29 @@ class TestUser(unittest.TestCase):
         )
 
         self.top3 = ClothingItem(
-            "Stussy New Legacy Logo T Shirt",
-            "White/Black",
-            "Stussy/OurLegacy",
+            "Billie Eilish Murakami Oversized T Shirt",
+            "Black",
+            "Uniqlo/Murakami",
             "Warm,Cold",
             "TOP",
         )
 
-        # self.user1.add_pet(self.pet1)
-        # self.user2.add_pet(self.pet2)
+        self.pants1 = ClothingItem(
+            "Dickies Black Double Knee",
+            "Black",
+            "Dickies",
+            "Warm,Cold",
+            "PANT",
+        )
+
+        self.pants2 = ClothingItem(
+            "Vintage Levis 517 Orange Tab",
+            "Blue",
+            "Levis",
+            "Warm,Cold",
+            "PANT",
+        )
+
         pass
 
     def tearDown(self) -> None:
@@ -63,20 +101,22 @@ class TestUser(unittest.TestCase):
         pass
 
     def test_user_comp(self) -> None:
-        #     self.assertNotEqual(self.user1, self.user2)
 
-        #     # Both have one pet
-        #     self.assertEqual(len(self.user1.pets), len(self.user2.pets))
+        # Hat check
+        self.assertNotEqual(self.hat1, self.hat2)  # Completely different item
+        self.assertEqual(
+            self.hat1, self.hat1_again
+        )  # Same exact hat - just different object
+        self.assertNotEqual(
+            self.hat1, self.hat1_again_in_white
+        )  # Different color = not equal
+        self.assertNotEqual(
+            self.hat1, self.hat1_different_brand
+        )  # Different brand = not equal
 
-        #     self.assertEqual(self.user1.location, self.user2.location)
-
-        # def test_pet_comp(self):
-        #     self.assertNotEqual(self.pet1, self.pet2)
-
-        #     self.assertNotEqual(self.pet1.breed, self.pet2.breed)
-        #     self.assertNotEqual(self.pet1.owner, self.pet2.owner)
-        #     self.assertNotEqual(self.pet1.species, self.pet2.species)
-        pass
+        # Different type checks
+        self.assertNotEqual(self.hat1, self.pants1)
+        self.assertNotEqual(self.hat1_again, self.top1)
 
 
 # Running the unit tests above

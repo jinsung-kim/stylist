@@ -75,9 +75,9 @@ class ClothingItem:
             s += "\nSecondary Color: " + self.colors[1]
 
         if len(self.weather) > 1:
-            s += "\nFor both weathers"
+            s += "\nFor most weather"
         else:
-            s += "\nFor Weather Condition: " + self.weather[0]
+            s += "\nFor " + self.weather[0] + " temperatures"
 
         if len(self.brand) > 1:
             s += "\nBrand(s): " + self.brand[0] + "/" + self.brand[1]
@@ -88,10 +88,58 @@ class ClothingItem:
 
         return s
 
-    def __eq__(self, other):
+    # Comparison checking for each attribute
+
+    def same_for(self, other: ClothingItem, check_for: str):
+        """
+        Checks if the attributes match
+
+        Ex for brand:
+        [Stussy, Nike], [Nike] -> False
+        [Stussy, Nike], [Stussy, Rick Owen] -> False
+        [Stussy, Nike], [Stussy, Nike] -> True
+        [Nike], [Nike] -> True
+        """
+        self_arr = []
+        other_arr = []
+        if check_for == "brand":
+            self_arr = self.brand
+            other_arr = other.brand
+        elif check_for == "color":
+            self_arr = self.colors
+            other_arr = other.colors
+        elif check_for == "weather":
+            self_arr = self.weather
+            other_arr = other.weather
+        elif check_for == "type":
+            return self.item_type == other.item_type
+        else:  # Checking for something that does not exist
+            return False
+
+        if len(self_arr) != len(other_arr):
+            return False
+        else:
+            # Both solo items
+            if len(self_arr) == 1:
+                return self_arr[0] == other_arr[0]
+            # Both collab items
+            else:
+                if self_arr[0] == other_arr[0] and self_arr[1] == other_arr[1]:
+                    return True
+                return False
+
+    def __eq__(self, other: ClothingItem):
         """
         Compares if two items are the same, this will be important later when the graph algorithm is used
         as it will help make sure the same node is not visited twice
         Might also be used to check in an item is added twice
+
+        NOTE: Two items in different colors are recognized as two different items
         """
-        pass
+        check_for_array = ["brand", "color", "weather", "type"]
+
+        for check_for in check_for_array:
+            if self.same_for(other, check_for) == False:
+                return False
+
+        return True

@@ -13,7 +13,7 @@ OUTERWEAR
 "North Face Rain Jacket" Black TheNorthFace Cold
 "Uniqlo Tan Turtleneck" Tan Uniqlo Warm,Cold
 "Uniqlo Black Turtleneck" Black Uniqlo Warm,Cold
-"Yeezy Gap Black Hoodie" Black Yeezy/Gap Warm,Cold
+"Yeezy Gap Black Hoodie" Black Yeezy,Gap Warm,Cold
 
 TOP
 "Stussy Our Legacy White T Shirt" White/Black Stussy,OurLegacy Warm,Cold
@@ -24,6 +24,7 @@ TOP
 "Blank Black T Shirt" Black NoBrand Warm,Cold
 "Saturdays NYC White T Shirt" White Saturdays Warm,Cold
 "Saturdays NYC Black T Shirt" Black Saturdays Warm,Cold
+"Billie Eilish Murakami Oversized T Shirt" Black Uniqlo,Murakami Warm,Cold
 
 PANT
 "517 Levis Blue Orange Tab" LightBlue Levis Warm,Cold
