@@ -36,7 +36,11 @@ class Database:
 
     def output_to_txt(self, filename: str) -> bool:
         """
-        Prints the output
+        Prints the output into a text file so the user can save potential fit ideas
+
+        filename: the file that will be created ("saved_fits" -> "saved_fits.txt")
+
+        NOTE: If you select a filename that is already suggested, it may be overwritten
         """
         pass
 

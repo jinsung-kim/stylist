@@ -1,4 +1,3 @@
-CURRENT WARDROBE
 HAT
 "Stussy Beanie" Black/White Stussy,Nike Warm,Cold
 "Yankees Cap NavyBlue/White 47,Yankees Warm,Cold
@@ -43,10 +42,3 @@ SHOES
 "Doc Martens All Black 1460" Black DocMartens Warm,Cold
 "Undercover Brown Derbies" Brown Undercover/GU Warm,Cold
 "New Balance Grey 990v5" Grey/White NewBalance Warm,Cold
-
-RULESET
-BRANDS
-
-COLORSETS
-
-WEATHER

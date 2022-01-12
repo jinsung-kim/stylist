@@ -124,8 +124,16 @@ class ClothingItem:
                 return self_arr[0] == other_arr[0]
             # Both collab items
             else:
-                if self_arr[0] == other_arr[0] and self_arr[1] == other_arr[1]:
-                    return True
+                # Color is unique because we care about the order
+                # The primary color of the outfit always goes first
+                if check_for == "color":
+                    if self_arr[0] == other_arr[0] and self_arr[1] == other_arr[1]:
+                        return True
+                else:
+                    if self_arr[0] == other_arr[0] and self_arr[1] == other_arr[1]:
+                        return True
+                    elif self_arr[0] == other_arr[1] and self_arr[1] == other_arr[0]:
+                        return True
                 return False
 
     def __eq__(self, other: ClothingItem):
@@ -143,3 +151,8 @@ class ClothingItem:
                 return False
 
         return True
+
+
+class Graph:
+    def __init__(self):
+        pass
