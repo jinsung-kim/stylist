@@ -23,11 +23,11 @@ class ClothingItem:
         self, item_name: str, colors: str, brand: str, weather: str, item_type: str
     ) -> None:
         """
-        item_name: name of piece
-        colors: primary/secondary
-        brand: up to two (if collab)
-        weather: up to two (warm,cold)
-        item_type: Type of clothing (top, outerwear, pants, shoes)
+        :param item_name: name of piece
+        :param colors: primary/secondary
+        :param brand: up to two (if collab)
+        :param weather: up to two (warm,cold)
+        :param item_type: Type of clothing (top, outerwear, pants, shoes)
 
         attributes of ClothingItem
         item_name: name of piece
@@ -68,7 +68,7 @@ class ClothingItem:
             self.item_type = Type.shoes
 
     # Prints out the item with a short description of its attributes
-    def __str__(self):
+    def __str__(self) -> str:
         s = self.item_name + " \nPrimary Color: " + self.colors[0]
 
         if len(self.colors) > 1:
@@ -84,13 +84,13 @@ class ClothingItem:
         else:
             s += "\nBrand: " + self.brand[0]
 
-        s += "\nType: " + str(self.item_type.name)
+        s += "\nType: " + str(self.item_type.name) + "\n"
 
         return s
 
     # Comparison checking for each attribute
 
-    def same_for(self, other: ClothingItem, check_for: str):
+    def same_for(self, other: ClothingItem, check_for: str) -> bool:
         """
         Checks if the attributes match
 
@@ -99,6 +99,12 @@ class ClothingItem:
         [Stussy, Nike], [Stussy, Rick Owen] -> False
         [Stussy, Nike], [Stussy, Nike] -> True
         [Nike], [Nike] -> True
+
+        :param self: self object
+        :param other: other clothing item
+        :param check_for: what to check for
+
+        :return: whether the items are the same or not
         """
         self_arr = []
         other_arr = []
@@ -136,13 +142,18 @@ class ClothingItem:
                         return True
                 return False
 
-    def __eq__(self, other: ClothingItem):
+    def __eq__(self, other: ClothingItem) -> bool:
         """
         Compares if two items are the same, this will be important later when the graph algorithm is used
         as it will help make sure the same node is not visited twice
         Might also be used to check in an item is added twice
 
         NOTE: Two items in different colors are recognized as two different items
+
+        :param self: self object
+        "param other: other Clothing object to compare with
+
+        :return: whether the items are equal or not based on what to check for
         """
         check_for_array = ["brand", "color", "weather", "type"]
 

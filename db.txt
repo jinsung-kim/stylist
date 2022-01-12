@@ -1,6 +1,6 @@
 HAT
 "Stussy Beanie" Black/White Stussy,Nike Warm,Cold
-"Yankees Cap NavyBlue/White 47,Yankees Warm,Cold
+"Yankees Cap" NavyBlue/White 47,Yankees Warm,Cold
 
 OUTERWEAR
 "Carhartt WIP Detroit Chore Jacket" Tan CarharttWIP Cold
