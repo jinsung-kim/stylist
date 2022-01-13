@@ -10,7 +10,8 @@ OUTERWEAR
 "Black Blank Hoodie" Black NoBrand Warm,Cold
 "North Face Fleece Anorak" Brown/Green TheNorthFace Cold
 "North Face Rain Jacket" Black TheNorthFace Cold
-"Uniqlo Tan Turtleneck" Tan Uniqlo Warm,Cold
+"North Face Puffer Jacket" Black TheNorthFace Cold
+"Uniqlo Tan Turtleneck" Brown Uniqlo Warm,Cold
 "Uniqlo Black Turtleneck" Black Uniqlo Warm,Cold
 "Yeezy Gap Black Hoodie" Black Yeezy,Gap Warm,Cold
 
@@ -19,6 +20,7 @@ TOP
 "Stussy New York Black T Shirt" Black/White Stussy Warm,Cold
 "Stussy New York White T Shirt" White/Black Stussy Warm,Cold
 "Stussy Logo Navy Blue T Shirt" NavyBlue/White Stussy Warm,Cold
+"Stanford Nike Soccer Vintage Grey T Shirt" Grey/Red Nike Warm,Cold
 "Blank White T Shirt" White NoBrand Warm,Cold
 "Blank Black T Shirt" Black NoBrand Warm,Cold
 "Saturdays NYC White T Shirt" White Saturdays Warm,Cold
@@ -26,9 +28,9 @@ TOP
 "Billie Eilish Murakami Oversized T Shirt" Black Uniqlo,Murakami Warm,Cold
 
 PANT
-"517 Levis Blue Orange Tab" LightBlue Levis Warm,Cold
-"517 Levis Dark Blue" DarkBlue Levis Warm,Cold
-"505 Levis Light Blue" LightBlue Levis Warm,Cold
+"517 Levis Blue Orange Tab Denim" LightBlue Levis Warm,Cold
+"517 Levis Dark Blue Denim" DarkBlue Levis Warm,Cold
+"505 Levis Light Blue Denim" LightBlue Levis Warm,Cold
 "Dickies Black Double Knee" Black Dickies Warm,Cold
 "Dickies Grey Double Knee" Grey Dickies Warm,Cold
 

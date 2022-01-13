@@ -1,5 +1,36 @@
 BRANDS
+GOOD
+Stussy,Levis
+Stussy,Dickies
+Dickies,Suicoke
+Levis,Nike
+CarharttWIP,Levis
+Uniqlo,Levis
+Levis,DocMartens
+HelmutLang,Dickies
+
+BAD
+Nike,Adidas
+Supreme,Bape
 
 COLORSETS
+GOOD
+Black,Blue
+White,Blue
+NavyBlue,Blue
+White,LightBlue
+Brown,Black
+Grey,White
+Grey,Black
+White,Blue,Black
+Black,Blue,Brown
+Black,Blue,Black
+
+BAD
+Red,Blue
 
 WEATHER
+WARM
+50-85
+COLD
+20-49
