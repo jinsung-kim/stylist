@@ -29,9 +29,3 @@ Black,Blue,Black
 
 BAD
 Red,Blue
-
-WEATHER
-WARM
-50-85
-COLD
-20-49

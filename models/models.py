@@ -21,7 +21,7 @@ class Type(enum.Enum):
 class ClothingItem:
     def __init__(
         self, item_name: str, colors: str, brand: str, weather: str, item_type: str
-    ) -> None:
+    ):
         """
         :param item_name: name of piece
         :param colors: primary/secondary
@@ -192,7 +192,7 @@ class Node:
         self.end = end
         self.children = {}
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         return (
             self.weight == other.weight
             and self.value == other.value
@@ -224,9 +224,11 @@ class Rule:
     def __eq__(self, other):
         return self.type == other.type
 
-    def add_combo(self, combo: str):
+    def add_combo(self, combo: str, weight: int = 0):
         """
         :param combo: combination to be parsed and added
+        :param weight: optional weight, at the end for the graph
+        to determine results
 
         "Stussy/Nike" -> ["Stussy", "Nike"] -> Inserted as
         Node(Stussy) linked to Node(Nike) -> end
@@ -234,30 +236,35 @@ class Rule:
 
         combo_array = combo.split(",")
 
-        curr = self.start
-        i = 0
+        curr: Node = self.start
+        i: int = 0
         while i < len(combo_array):
             if combo_array[i] not in curr.children:
                 curr.children[combo_array[i]] = Node(combo_array[i])
             curr = curr.children[combo_array[i]]
             i += 1
+
+        curr.weight = weight
         curr.end = True
 
-    def combo_exists(self, combo: list[str]) -> bool:
+    def combo_exists(self, combo: list[str]) -> tuple[bool, int]:
         """
         :param combo: given a list of string (brand or color)
 
         determines whether it exists or not in the trie structure
+        returns true / false (if found), score of combination
         """
-        i = 0
-        curr = self.start
+        i: int = 0
+        score: int = 0
+        curr: Node = self.start
         while i < len(combo) and curr:
             if combo[i] not in curr.children:
-                return False
+                return (False, -1)
             curr = curr.children[combo[i]]
+            score += curr.weight
             i += 1
 
-        return curr.end and i == len(combo)
+        return ((curr.end and i == len(combo)), score)
 
 
 class Graph:
