@@ -17,6 +17,7 @@ COLORSETS
 GOOD
 Black,Blue
 White,Blue
+Blue,Brown
 NavyBlue,Blue
 White,LightBlue
 Brown,Black

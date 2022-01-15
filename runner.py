@@ -37,9 +37,9 @@ class Database:
         self.clothing_items = {}
         self.rule_set = {}
 
-    def load_from_txt(self, filename: str = "db.txt") -> bool:
+    def load_from_txt(self, filename: str = "rotation.txt") -> bool:
         """
-        Reads in a txt file formatted (default db.txt) and applies the clothing items and rules
+        Reads in a txt file formatted (default rotation.txt) and applies the clothing items and rules
         into the RAM to be processed
 
         Note: It is important that any operations done should be logged or saved into another txt file

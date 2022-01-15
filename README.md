@@ -19,12 +19,12 @@ Helmut Lang Lava Logo Hoodie, White Blank T Shirt, Dickies Black Double Knee, Do
 
 ### Formatting
 
-The main files to format are db.txt (which is where the items you want to input live) and
+The main files to format are rotation.txt (which is where the items you want to input live) and
 ruleset.txt (where the rules of the way you dress are listed to determine the weight of the nodes).
 Ruleset was separated in design to allow the user to import different rulesets easily. For instance, if you were
-to trust my judgment, my ruleset could easily be fit into your db.txt file.
+to trust my judgment, my ruleset could easily be fit into your rotation.txt file.
 
-#### db.txt Format
+#### rotation.txt Format
 
 Take a look at the file there by default (my current rotation) to see the basic formatting. </br>
 Generally:

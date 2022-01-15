@@ -92,13 +92,11 @@ class TestUser(unittest.TestCase):
             "PANT",
         )
 
-        pass
-
     def tearDown(self) -> None:
         """
         Objects to be destroyed are put here when the tests are over
         """
-        pass
+        return super().tearDown()
 
     def test_user_comp(self) -> None:
 

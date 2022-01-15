@@ -151,7 +151,7 @@ class ClothingItem:
         NOTE: Two items in different colors are recognized as two different items
 
         :param self: self object
-        "param other: other Clothing object to compare with
+        :param other: other Clothing object to compare with
 
         :return: whether the items are equal or not based on what to check for
         """
@@ -164,9 +164,100 @@ class ClothingItem:
         return True
 
 
+class RuleType(enum.Enum):
+
+    color = 0
+    brand = 1
+    weather = 2
+    undefined = -1
+
+
+class Node:
+    def __init__(self, value: str, weight: int = 0, end: bool = False):
+        """
+        :param value: the value of the trie that links to other nodes
+        :param weight: the weight of the value, positive indicates good,
+        negative discourages the algorithm from picking
+
+        attributes of Node:
+        value: color/brand, depending on the ruleset. Looking for matches
+        from the generated outfits
+        weight: frequency of usage, how the combo is set in the ruleset
+        end: a boolean that represents end of rule
+        children: connections to other nodes
+        NOTE: there can be more connected nodes even if there is an end
+        """
+        self.value = value
+        self.weight = weight
+        self.end = end
+        self.children = {}
+
+    def __eq__(self, other):
+        return (
+            self.weight == other.weight
+            and self.value == other.value
+            and self.end == other.end
+            and self.children == other.children
+        )
+
+
 class Rule:
-    def __init__(self):
-        pass
+    def __init__(self, type: str):
+        """
+        :param type: the type of rule (color, brand)
+
+        attributes of Rule
+        type: type of rule as an enum
+        start: where all the nodes live
+        """
+        if type == "COLOR":
+            self.type = RuleType.color
+        elif type == "BRAND":
+            self.type = RuleType.brand
+        elif type == "WEATHER":
+            self.type = RuleType.weather
+        else:
+            self.type = RuleType.undefined
+
+        self.start = Node("", 0, False)
+
+    def __eq__(self, other):
+        return self.type == other.type
+
+    def add_combo(self, combo: str):
+        """
+        :param combo: combination to be parsed and added
+
+        "Stussy/Nike" -> ["Stussy", "Nike"] -> Inserted as
+        Node(Stussy) linked to Node(Nike) -> end
+        """
+
+        combo_array = combo.split(",")
+
+        curr = self.start
+        i = 0
+        while i < len(combo_array):
+            if combo_array[i] not in curr.children:
+                curr.children[combo_array[i]] = Node(combo_array[i])
+            curr = curr.children[combo_array[i]]
+            i += 1
+        curr.end = True
+
+    def combo_exists(self, combo: list[str]) -> bool:
+        """
+        :param combo: given a list of string (brand or color)
+
+        determines whether it exists or not in the trie structure
+        """
+        i = 0
+        curr = self.start
+        while i < len(combo) and curr:
+            if combo[i] not in curr.children:
+                return False
+            curr = curr.children[combo[i]]
+            i += 1
+
+        return curr.end and i == len(combo)
 
 
 class Graph:
