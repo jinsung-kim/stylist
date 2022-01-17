@@ -1,4 +1,4 @@
-BRANDS
+BRAND
 GOOD
 Stussy,Levis
 Stussy,Dickies
@@ -13,7 +13,7 @@ BAD
 Nike,Adidas
 Supreme,Bape
 
-COLORSETS
+COLOR
 GOOD
 Black,Blue
 White,Blue

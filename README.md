@@ -57,4 +57,4 @@ SHOES </br>
 
 #### ruleset.txt Format
 
-To be written...
+There are currently two categories accepted:

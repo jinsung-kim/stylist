@@ -3,10 +3,14 @@ import sys
 import os
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from models.models import Graph, Node, Rule, RuleType
+from models.models import Graph, Node, Rule
 
 
 class TestDataStructures(unittest.TestCase):
+    """
+    TEST: Trie structure for enforcing rules and Graph structure for enforcing outfits
+    """
+
     def setUp(self) -> None:
         """
         Objects that are initialized in here are created

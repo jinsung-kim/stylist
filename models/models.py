@@ -11,11 +11,11 @@ class Type(enum.Enum):
     Eventually accessories would need to be added
     """
 
-    hat = 1
-    top = 2
-    outerwear = 3
-    pants = 4
-    shoes = 5
+    hat = 0
+    top = 1
+    outerwear = 2
+    pants = 3
+    shoes = 4
 
 
 class ClothingItem:
@@ -62,10 +62,13 @@ class ClothingItem:
             self.item_type = Type.outerwear
         elif item_type == "TOP":
             self.item_type = Type.top
-        elif item_type == "PANT":
+        elif item_type == "PANTS":
             self.item_type = Type.pants
         elif item_type == "SHOES":
             self.item_type = Type.shoes
+
+    def __hash__(self) -> int:
+        return hash(self.item_name)
 
     # Prints out the item with a short description of its attributes
     def __str__(self) -> str:
@@ -200,6 +203,10 @@ class Node:
             and self.children == other.children
         )
 
+    def __str__(self) -> str:
+        res = "Value: %s Weight: %s" % (self.value, self.weight)
+        return res
+
 
 class Rule:
     def __init__(self, type: str):
@@ -221,8 +228,12 @@ class Rule:
 
         self.start = Node("", 0, False)
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         return self.type == other.type
+
+    def __str__(self) -> str:
+        res = "Rule: %s \nStart Node: (%s)" % (self.type, self.start)
+        return res
 
     def add_combo(self, combo: str, weight: int = 0):
         """
@@ -269,4 +280,73 @@ class Rule:
 
 class Graph:
     def __init__(self):
-        pass
+        """
+        Graph structure consisting of nodes
+
+        attributes of Graph:
+        all_items: all the items stored in the list
+        adj_list: all the connections drawn by pairs
+        """
+        self.all_items: list[list[ClothingItem]] = [[], [], [], [], []]
+
+        self.adj_list: dict[ClothingItem, list[ClothingItem]] = {}
+
+    def add_collection(self, collection: list[ClothingItem]) -> bool:
+        """
+        Adds a collection to the already existing graph.
+
+        :return: whether it was successfully added or not
+        """
+        if len(collection) == 0:
+            return False
+
+        # index of the category
+        index: int = collection[0].item_type.value
+
+        # simply overload the category with the current collection
+        self.all_items[index] = collection
+
+        return True
+
+    def add_all(self, collections: dict[str, list[ClothingItem]]) -> bool:
+        categories = ["HAT", "OUTERWEAR", "TOP", "PANTS", "SHOES"]
+
+        for category in categories:
+            res = self.add_collection(collections[category])
+            if res == False:
+                return False
+
+        return True
+
+    def add_connections(self) -> bool:
+        """
+        Given an already filled graph, connections are drawn between
+        each layer. This function will not continue if one category is
+        completely empty
+
+        :return: whether the connections were added successfully
+        """
+        for category in self.all_items:
+            if len(category) == 0:
+                return False
+
+        for i in range(len(self.all_items)):
+            category = self.all_items[i]
+            above = i - 1 if i - 1 >= 0 else -1
+            below = i + 1 if i + 1 < 5 else -1
+
+            to_connect: list[ClothingItem] = []
+
+            if above == -1:
+                to_connect = self.all_items[below]
+            elif below == -1:
+                to_connect = self.all_items[above]
+            else:
+                to_connect = self.all_items[above] + self.all_items[below]
+
+            # For each item in the category - connect to the pieces
+            # below and above
+            for item in category:
+                self.adj_list[item] = to_connect
+
+        return True
