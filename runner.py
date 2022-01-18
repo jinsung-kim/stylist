@@ -53,7 +53,8 @@ class Database:
 
         curr = ""
 
-        target = ["HAT", "TOP", "OUTERWEAR", "PANTS", "SHOES"]
+        # target = ["HAT", "TOP", "OUTERWEAR", "PANTS", "SHOES"]
+        target = ["TOP", "PANTS", "SHOES"]
 
         # Add each item in its intended category
         for line in lines:
@@ -61,7 +62,9 @@ class Database:
             if line in target:
                 curr = line
                 self.clothing_items[curr] = []
-            elif len(line) > 0:
+            elif len(line) == 0:
+                pass
+            else:
                 re, ind = get_in_quote(line)
                 rest_of_line = line[ind + 1 :]
                 attributes = rest_of_line.split(" ")
@@ -110,7 +113,7 @@ class Database:
     def output_to_txt(self, filename: str) -> bool:
         """
         Prints the output into a text file so the user can save potential fit ideas
-        NOTE: If you select a filename that is already suggested, it may be overwritten
+        NOTE: If you select a filename already taken in the directory, it may be overwritten
 
         :param filename: the file that will be created ("saved_fits" -> "saved_fits.txt")
         :return: whether the exporting was successful or not
@@ -130,16 +133,10 @@ def main() -> None:
     db.load_ruleset_from_txt()
 
     g = Graph()
+    g.add_all(db.clothing_items)
+    g.add_connections()
 
-    # Add each category
-    # g.add_collection(db.clothing_items["HAT"])
-    # g.add_collection(db.clothing_items["OUTERWEAR"])
-    # g.add_collection(db.clothing_items["TOP"])
-    # g.add_collection(db.clothing_items["PANTS"])
-    # g.add_collection(db.clothing_items["SHOES"])
-
-    # res = g.add_all(db.clothing_items)
-    print(g.add_connections())
+    g.generate_fits(db.rule_set)
 
 
 if __name__ == "__main__":

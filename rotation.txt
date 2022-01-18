@@ -1,20 +1,3 @@
-HAT
-"Stussy Beanie" Black/White Stussy,Nike Warm,Cold
-"Yankees Cap" NavyBlue/White 47,Yankees Warm,Cold
-
-OUTERWEAR
-"Carhartt WIP Detroit Chore Jacket" Tan CarharttWIP Cold
-"Helmut Lang Lava Logo Hoodie" Red/Black HelmutLang Warm,Cold
-"Helmut Lang Taxi Logo Hoodie" White/Black HelmutLang Warm,Cold
-"Russell Grey Blank Hoodie" Grey NoBrand Warm,Cold
-"Black Blank Hoodie" Black NoBrand Warm,Cold
-"North Face Fleece Anorak" Brown/Green TheNorthFace Cold
-"North Face Rain Jacket" Black TheNorthFace Cold
-"North Face Puffer Jacket" Black TheNorthFace Cold
-"Uniqlo Tan Turtleneck" Brown Uniqlo Warm,Cold
-"Uniqlo Black Turtleneck" Black Uniqlo Warm,Cold
-"Yeezy Gap Black Hoodie" Black Yeezy,Gap Warm,Cold
-
 TOP
 "Stussy Our Legacy White T Shirt" White/Black Stussy,OurLegacy Warm,Cold
 "Stussy New York Black T Shirt" Black/White Stussy Warm,Cold
@@ -26,6 +9,17 @@ TOP
 "Saturdays NYC White T Shirt" White Saturdays Warm,Cold
 "Saturdays NYC Black T Shirt" Black Saturdays Warm,Cold
 "Billie Eilish Murakami Oversized T Shirt" Black Uniqlo,Murakami Warm,Cold
+"Carhartt WIP Detroit Chore Jacket" Tan CarharttWIP Cold
+"Helmut Lang Lava Logo Hoodie" Red/Black HelmutLang Warm,Cold
+"Helmut Lang Taxi Logo Hoodie" White/Black HelmutLang Warm,Cold
+"Russell Grey Blank Hoodie" Grey NoBrand Warm,Cold
+"Black Blank Hoodie" Black NoBrand Warm,Cold
+"North Face Fleece Anorak" Brown/Green TheNorthFace Cold
+"North Face Rain Jacket" Black TheNorthFace Cold
+"North Face Puffer Jacket" Black TheNorthFace Cold
+"Uniqlo Tan Turtleneck" Brown Uniqlo Warm,Cold
+"Uniqlo Black Turtleneck" Black Uniqlo Warm,Cold
+"Yeezy Gap Black Hoodie" Black Yeezy,Gap Warm,Cold
 
 PANTS
 "517 Levis Blue Orange Tab Denim" LightBlue Levis Warm,Cold

@@ -1,6 +1,7 @@
 # Forward declarations for type hinting
 from __future__ import annotations
 import enum
+from collections import deque
 
 
 class Type(enum.Enum):
@@ -11,11 +12,14 @@ class Type(enum.Enum):
     Eventually accessories would need to be added
     """
 
-    hat = 0
-    top = 1
-    outerwear = 2
-    pants = 3
-    shoes = 4
+    # hat = 0
+    # top = 1
+    # outerwear = 2
+    # pants = 3
+    # shoes = 4
+    top = 0
+    pants = 1
+    shoes = 2
 
 
 class ClothingItem:
@@ -287,7 +291,8 @@ class Graph:
         all_items: all the items stored in the list
         adj_list: all the connections drawn by pairs
         """
-        self.all_items: list[list[ClothingItem]] = [[], [], [], [], []]
+        # This needs to be changed back to 5 when hats and outerwear is included again
+        self.all_items: list[list[ClothingItem]] = [[], [], []]
 
         self.adj_list: dict[ClothingItem, list[ClothingItem]] = {}
 
@@ -309,7 +314,8 @@ class Graph:
         return True
 
     def add_all(self, collections: dict[str, list[ClothingItem]]) -> bool:
-        categories = ["HAT", "OUTERWEAR", "TOP", "PANTS", "SHOES"]
+        # categories = ["HAT", "OUTERWEAR", "TOP", "PANTS", "SHOES"]
+        categories = ["TOP", "PANTS", "SHOES"]
 
         for category in categories:
             res = self.add_collection(collections[category])
@@ -332,17 +338,21 @@ class Graph:
 
         for i in range(len(self.all_items)):
             category = self.all_items[i]
-            above = i - 1 if i - 1 >= 0 else -1
-            below = i + 1 if i + 1 < 5 else -1
+            # above = i - 1 if i - 1 >= 0 else -1
+            below = i + 1 if i + 1 < len(self.all_items) else -1
 
             to_connect: list[ClothingItem] = []
 
-            if above == -1:
-                to_connect = self.all_items[below]
-            elif below == -1:
-                to_connect = self.all_items[above]
+            # if above == -1:
+            #     to_connect = self.all_items[below]
+            # elif below == -1:
+            #     to_connect = self.all_items[above]
+            # else:
+            #     to_connect = self.all_items[above] + self.all_items[below]
+            if below == -1:
+                pass
             else:
-                to_connect = self.all_items[above] + self.all_items[below]
+                to_connect = self.all_items[below]
 
             # For each item in the category - connect to the pieces
             # below and above
@@ -350,3 +360,15 @@ class Graph:
                 self.adj_list[item] = to_connect
 
         return True
+
+    def generate_fits(self, rule_set: dict[str, Rule]) -> list[list[ClothingItem]]:
+        res: list[list[ClothingItem]] = []
+
+        queue = deque()
+
+        for item in self.all_items[0]:
+            queue.append(item)
+
+        print(len(queue))
+
+        return res
