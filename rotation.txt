@@ -39,3 +39,20 @@ SHOES
 "Doc Martens All Black 1460" Black DocMartens Warm,Cold
 "Undercover Brown Derbies" Brown Undercover/GU Warm,Cold
 "New Balance Grey 990v5" Grey/White NewBalance Warm,Cold
+
+END
+
+FAVORITES
+"Stussy Our Legacy White T Shirt" 1
+"Stussy New York Black T Shirt" 1
+"Stanford Nike Soccer Vintage Grey T Shirt" 1
+"Carhartt WIP Detroit Chore Jacket" 2
+"Yeezy Gap Black Hoodie" 1
+"Helmut Lang Denim Jacket" 2
+"Russell Grey Blank Hoodie" 1
+"517 Levis Blue Orange Tab Denim" 2
+"517 Levis Dark Blue Denim" 2
+"Dickies Black Double Knee" 1
+"Suicoke Black Mura-V" 1
+"Doc Martens All Black 1460" 2
+"Diemme Biege Duck Boots" 1

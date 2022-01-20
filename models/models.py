@@ -96,7 +96,6 @@ class ClothingItem:
         return s
 
     # Comparison checking for each attribute
-
     def same_for(self, other: ClothingItem, check_for: str) -> bool:
         """
         Checks if the attributes match
@@ -267,19 +266,35 @@ class Rule:
         :param combo: given a list of string (brand or color)
 
         determines whether it exists or not in the trie structure
-        returns true / false (if found), score of combination
+        :return: true / false (if found), score of combination
         """
         i: int = 0
         score: int = 0
         curr: Node = self.start
         while i < len(combo) and curr:
             if combo[i] not in curr.children:
-                return (False, -1)
+                return (False, 0)
             curr = curr.children[combo[i]]
             score += curr.weight
             i += 1
 
         return ((curr.end and i == len(combo)), score)
+
+    def score_fit(self, fit: list[ClothingItem]) -> int:
+        """
+        :param fit: the outfit generated
+
+        :return: the score that the fit generates - the higher the better
+        """
+        fit_str = []
+        if self.type == RuleType.brand:
+            for item in fit:
+                fit_str.append(item.brand[0])
+        elif self.type == RuleType.color:
+            for item in fit:
+                fit_str.append(item.color[0])
+        else:
+            pass
 
 
 class Graph:

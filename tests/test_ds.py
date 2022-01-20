@@ -61,7 +61,7 @@ class TestDataStructures(unittest.TestCase):
         # Score checks
         self.assertEqual(self.brand_rule.combo_exists(["Stussy", "Levis"])[1], 2)
         self.assertEqual(self.brand_rule.combo_exists(["Stussy"])[1], 0)
-        self.assertEqual(self.brand_rule.combo_exists(["Stussy,Levis,Adidas"])[1], -1)
+        self.assertEqual(self.brand_rule.combo_exists(["Stussy,Levis,Adidas"])[1], 0)
 
 
 if __name__ == "__main__":
