@@ -136,7 +136,9 @@ def main() -> None:
     g.add_all(db.clothing_items)
     g.add_connections()
 
-    g.generate_fits(db.rule_set)
+    res = g.generate_fits(db.rule_set)
+    print(len(res))
+    # print(res)
 
 
 if __name__ == "__main__":

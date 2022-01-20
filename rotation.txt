@@ -12,6 +12,7 @@ TOP
 "Carhartt WIP Detroit Chore Jacket" Tan CarharttWIP Cold
 "Helmut Lang Lava Logo Hoodie" Red/Black HelmutLang Warm,Cold
 "Helmut Lang Taxi Logo Hoodie" White/Black HelmutLang Warm,Cold
+"Helmut Lang Denim Jacket" Grey/White HelmutLang Warm,Cold
 "Russell Grey Blank Hoodie" Grey NoBrand Warm,Cold
 "Black Blank Hoodie" Black NoBrand Warm,Cold
 "North Face Fleece Anorak" Brown/Green TheNorthFace Cold

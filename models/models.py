@@ -1,7 +1,7 @@
 # Forward declarations for type hinting
 from __future__ import annotations
 import enum
-from collections import deque
+import copy
 
 
 class Type(enum.Enum):
@@ -364,11 +364,26 @@ class Graph:
     def generate_fits(self, rule_set: dict[str, Rule]) -> list[list[ClothingItem]]:
         res: list[list[ClothingItem]] = []
 
-        queue = deque()
-
         for item in self.all_items[0]:
-            queue.append(item)
-
-        print(len(queue))
+            self.dfs([], res, item)
 
         return res
+
+    def dfs(
+        self,
+        curr_fit: list[ClothingItem],
+        res: list[list[ClothingItem]],
+        item: ClothingItem,
+    ):
+        curr_fit.append(item)
+
+        # Last item in the outfit
+        if item.item_type == Type.shoes:
+            if curr_fit not in res:
+                # Makes a deep copy
+                res.append(copy.deepcopy(curr_fit))
+        else:
+            # For all items connected to the current:
+            for connected_item in self.adj_list[item]:
+                self.dfs(curr_fit, res, connected_item)
+            curr_fit.pop()
