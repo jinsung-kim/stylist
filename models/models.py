@@ -418,4 +418,5 @@ class Graph:
             # For all items connected to the current:
             for connected_item in self.adj_list[item]:
                 self.dfs(curr_fit, res, connected_item)
-            curr_fit.pop()
+
+        curr_fit.pop()

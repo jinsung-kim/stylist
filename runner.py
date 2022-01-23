@@ -4,8 +4,8 @@ import os
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from models.models import ClothingItem, Rule, Graph
-from helpers import get_in_quote, get_piece_score
-from outfit_formatter import format_outfit
+from helpers.helpers import get_in_quote, get_piece_score
+from helpers.outfit_formatter import format_outfit
 
 
 class Database:
