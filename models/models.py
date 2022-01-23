@@ -23,9 +23,9 @@ class Type(enum.Enum):
 
 
 class ClothingItem:
-    def __init__(
-        self, item_name: str, colors: str, brand: str, weather: str, item_type: str
-    ):
+
+    def __init__(self, item_name: str, colors: str, brand: str, weather: str,
+                 item_type: str):
         """
         :param item_name: name of piece
         :param colors: primary/secondary
@@ -139,12 +139,15 @@ class ClothingItem:
                 # Color is unique because we care about the order
                 # The primary color of the outfit always goes first
                 if check_for == "color":
-                    if self_arr[0] == other_arr[0] and self_arr[1] == other_arr[1]:
+                    if self_arr[0] == other_arr[0] and self_arr[
+                            1] == other_arr[1]:
                         return True
                 else:
-                    if self_arr[0] == other_arr[0] and self_arr[1] == other_arr[1]:
+                    if self_arr[0] == other_arr[0] and self_arr[
+                            1] == other_arr[1]:
                         return True
-                    elif self_arr[0] == other_arr[1] and self_arr[1] == other_arr[0]:
+                    elif self_arr[0] == other_arr[1] and self_arr[
+                            1] == other_arr[0]:
                         return True
                 return False
 
@@ -179,6 +182,7 @@ class RuleType(enum.Enum):
 
 
 class Node:
+
     def __init__(self, value: str, weight: int = 0, end: bool = False):
         """
         :param value: the value of the trie that links to other nodes
@@ -199,12 +203,8 @@ class Node:
         self.children = {}
 
     def __eq__(self, other) -> bool:
-        return (
-            self.weight == other.weight
-            and self.value == other.value
-            and self.end == other.end
-            and self.children == other.children
-        )
+        return (self.weight == other.weight and self.value == other.value
+                and self.end == other.end and self.children == other.children)
 
     def __str__(self) -> str:
         res = "Value: %s Weight: %s" % (self.value, self.weight)
@@ -212,6 +212,7 @@ class Node:
 
 
 class Rule:
+
     def __init__(self, type: str):
         """
         :param type: the type of rule (color, brand)
@@ -287,17 +288,28 @@ class Rule:
         :return: the score that the fit generates - the higher the better
         """
         fit_str = []
+        score = 0
+
         if self.type == RuleType.brand:
             for item in fit:
                 fit_str.append(item.brand[0])
         elif self.type == RuleType.color:
             for item in fit:
-                fit_str.append(item.color[0])
+                fit_str.append(item.colors[0])
         else:
             pass
 
+        for i in range(len(fit_str)):
+            slice = fit_str[i:]
+            exists, curr_score = self.combo_exists(slice)
+            if exists:
+                score += curr_score
+
+        return score
+
 
 class Graph:
+
     def __init__(self):
         """
         Graph structure consisting of nodes
@@ -358,12 +370,16 @@ class Graph:
 
             to_connect: list[ClothingItem] = []
 
+            # TODO: Clean this up (what am I even doing here)
+            # Ideally want this to be an actual graph -> right now shaped like a trie
+
             # if above == -1:
             #     to_connect = self.all_items[below]
             # elif below == -1:
             #     to_connect = self.all_items[above]
             # else:
             #     to_connect = self.all_items[above] + self.all_items[below]
+
             if below == -1:
                 pass
             else:
@@ -376,7 +392,8 @@ class Graph:
 
         return True
 
-    def generate_fits(self, rule_set: dict[str, Rule]) -> list[list[ClothingItem]]:
+    def generate_fits(self, rule_set: dict[str,
+                                           Rule]) -> list[list[ClothingItem]]:
         res: list[list[ClothingItem]] = []
 
         for item in self.all_items[0]:

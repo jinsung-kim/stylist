@@ -23,9 +23,9 @@ TOP
 "Yeezy Gap Black Hoodie" Black Yeezy,Gap Warm,Cold
 
 PANTS
-"517 Levis Blue Orange Tab Denim" LightBlue Levis Warm,Cold
-"517 Levis Dark Blue Denim" DarkBlue Levis Warm,Cold
-"505 Levis Light Blue Denim" LightBlue Levis Warm,Cold
+"517 Levis Blue Orange Tab Denim" Blue Levis Warm,Cold
+"517 Levis Dark Blue Denim" Blue Levis Warm,Cold
+"505 Levis Light Blue Denim" Blue Levis Warm,Cold
 "Dickies Black Double Knee" Black Dickies Warm,Cold
 "Dickies Grey Double Knee" Grey Dickies Warm,Cold
 

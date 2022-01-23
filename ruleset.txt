@@ -18,14 +18,13 @@ GOOD
 Black,Blue
 White,Blue
 Blue,Brown
-NavyBlue,Blue
-White,LightBlue
 Brown,Black
 Grey,White
 Grey,Black
 White,Blue,Black
 Black,Blue,Brown
 Black,Blue,Black
+Brown,Blue,Brown
 
 BAD
 Red,Blue
