@@ -46,7 +46,7 @@ FAVORITES
 "Stussy Our Legacy White T Shirt" 1
 "Stussy New York Black T Shirt" 1
 "Stanford Nike Soccer Vintage Grey T Shirt" 1
-"Carhartt WIP Detroit Chore Jacket" 2
+"Carhartt WIP Detroit Chore Jacket" 1
 "Yeezy Gap Black Hoodie" 1
 "Helmut Lang Denim Jacket" 2
 "Russell Grey Blank Hoodie" 1

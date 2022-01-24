@@ -13,6 +13,6 @@ def format_outfit(fit: list[ClothingItem]) -> str:
     res: str = ""
 
     for item in fit:
-        res += item.item_name + "\n"
+        res += item.item_name + " "
 
     return res

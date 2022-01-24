@@ -136,15 +136,19 @@ class Database:
             for check in check_for:
                 score = self.rule_set[check].score_fit(fit)
                 final_score += score
-                scored.append((final_score, fit))
+
+            scored.append((final_score, fit))
 
         res: list[list[ClothingItem]] = []
 
-        sorted(scored, key=lambda x: x[0])
+        # Sort by the score in the tuple
+        scored.sort(key=lambda y: y[0])
         scored.reverse()
 
         for i in range(top_k):
-            res.append(scored[i][1])
+            fit: list[ClothingItem] = scored[i][1]
+            if fit not in res:
+                res.append(fit)
 
         return res
 
