@@ -48,7 +48,7 @@ FAVORITES
 "Stanford Nike Soccer Vintage Grey T Shirt" 1
 "Carhartt WIP Detroit Chore Jacket" 1
 "Yeezy Gap Black Hoodie" 1
-"Helmut Lang Denim Jacket" 2
+"Helmut Lang Denim Jacket" 4
 "Russell Grey Blank Hoodie" 1
 "517 Levis Blue Orange Tab Denim" 2
 "517 Levis Dark Blue Denim" 2

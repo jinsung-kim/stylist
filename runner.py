@@ -132,10 +132,14 @@ class Database:
 
         for fit in outfits:
             final_score = 0
-            # Iterate through
+            # Iterate through to check color + brand rulesets
             for check in check_for:
                 score = self.rule_set[check].score_fit(fit)
                 final_score += score
+            # Find favorite items
+            for item in fit:
+                if item.item_name in self.favorites:
+                    final_score += self.favorites[item.item_name]
 
             scored.append((final_score, fit))
 
