@@ -1,6 +1,14 @@
 ### Goal
 
-Input closet -> Run algorithm -> Get outfits for the day
+Input closet -> Run algorithm -> Get outfits for the day </br>
+Very much still in progress (I wouldn't even consider this an alpha)
+
+### Main TODOS (Not in any order)
+
+1. Add a weather API to filter out by weather conditions in an area
+2. Randomize because favorite fits will always appear at the top
+3. Remember which fits were already generated and selected to filter out next time
+4. Generate an interface to make this much more presentable
 
 ### Basic algorithm
 
@@ -57,4 +65,4 @@ SHOES </br>
 
 #### ruleset.txt Format
 
-There are currently two categories accepted:
+GOOD, BAD, used to determine what color blocking combos or brand combos the programmer prefers
