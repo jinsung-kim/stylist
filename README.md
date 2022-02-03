@@ -3,6 +3,15 @@
 Input closet -> Run algorithm -> Get outfits for the day </br>
 Very much still in progress (I wouldn't even consider this an alpha)
 
+### Dependencies
+
+There are some external libraries that are used to simplify some code
+
+```
+pip install python-decouple
+pip install requests
+```
+
 ### Main TODOS (Not in any order)
 
 1. Add a weather API to filter out by weather conditions in an area

@@ -1,11 +1,15 @@
 from __future__ import annotations
 import sys
 import os
+import requests
+from decouple import config
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from models.models import ClothingItem, Rule, Graph
 from helpers.helpers import get_in_quote, get_piece_score
 from helpers.outfit_formatter import format_outfit
+
+API_KEY: str = config("WEATHER_KEY")
 
 
 class Database:
@@ -157,26 +161,85 @@ class Database:
         return res
 
 
+class Interface:
+
+    def __init__(self) -> None:
+        """
+        location: str - where the user is located
+        tempature_f: float - temperature in Fahrenheit
+        db: Database - where the items are loaded and live
+        g: Graph - the connections of the items
+        fits: list[list[ClothingItem]] - all of the generated outfits
+        """
+        self.location: str = ""
+        self.temperature_f: float = -1
+        self.db: Database = Database()
+        self.g: Graph = Graph()
+        self.fits: list[list[ClothingItem]] = []
+
+        # Load in
+        self.db.load_from_txt()
+        self.db.load_ruleset_from_txt()
+
+        self.g.add_all(self.db.clothing_items)
+        self.g.add_connections()
+
+        self.fits = self.g.generate_fits(self.db.rule_set)
+
+        self.print_intro()
+
+    def print_intro(self):
+        print("Your wardrobe has been loaded into the program.")
+
+    def set_location(self):
+        """
+        Sets the user location based on input
+        """
+        loc: str = input(
+            "Enter your location (address, city, lat/long, whatever you want): "
+        )
+        self.location = loc
+
+    def get_weather(self):
+        """
+        Retrieves the weather conditions given the location
+        Must be done after the location is set
+        """
+        WEATHER_URL: str = "http://api.weatherapi.com/v1/current.json?key=" + API_KEY + "&q=" + self.location + "&aqi=no"
+
+        r = requests.get(WEATHER_URL)
+
+        if (r.status_code == 200):
+            self.temperature_f = float(r.json()["current"]["temp_f"])
+        else:
+            print(
+                "The weather could not be retrieved. Please try again later.")
+
+    def get_fits(self):
+        """
+        Gets the outfits - Goes from best to worst
+        Asks the user how many they want
+        """
+        number_requested: int = int(
+            input("How many would you like to retrieve for the day? "))
+
+        filtered_res: list[list[ClothingItem]] = self.db.filter_outfits(
+            self.fits, number_requested)
+
+        for fit in filtered_res:
+            print(format_outfit(fit))
+
+        # Get more if the user is not satisfied with any of them
+
+
 def main() -> None:
     """
     Where every object lives and is executed
-
-    TODO: Make this an interactive shell
     """
-    db = Database()
-
-    db.load_from_txt()
-    db.load_ruleset_from_txt()
-
-    g = Graph()
-    g.add_all(db.clothing_items)
-    g.add_connections()
-
-    res = g.generate_fits(db.rule_set)
-    filtered_res: list[list[ClothingItem]] = db.filter_outfits(res, 5)
-
-    for fit in filtered_res:
-        print(format_outfit(fit))
+    i: Interface = Interface()
+    i.set_location()
+    i.get_weather()
+    # i.get_fits()
 
 
 if __name__ == "__main__":
