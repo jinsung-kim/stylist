@@ -12,6 +12,8 @@ pip install python-decouple
 pip install requests
 ```
 
+I may bundle everything in a virtual environment if the packages get too large
+
 ### Main TODOS (Not in any order)
 
 1. Add a weather API to filter out by weather conditions in an area

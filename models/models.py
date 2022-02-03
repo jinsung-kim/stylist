@@ -392,8 +392,7 @@ class Graph:
 
         return True
 
-    def generate_fits(self, rule_set: dict[str,
-                                           Rule]) -> list[list[ClothingItem]]:
+    def generate_fits(self) -> list[list[ClothingItem]]:
         res: list[list[ClothingItem]] = []
 
         for item in self.all_items[0]:
