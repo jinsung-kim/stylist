@@ -17,6 +17,7 @@ class Type(enum.Enum):
     # outerwear = 2
     # pants = 3
     # shoes = 4
+    undefined = -1
     top = 0
     pants = 1
     shoes = 2
@@ -70,6 +71,8 @@ class ClothingItem:
             self.item_type = Type.pants
         elif item_type == "SHOES":
             self.item_type = Type.shoes
+        else:
+            self.item_type = Type.undefined
 
     def __hash__(self) -> int:
         return hash(self.item_name)
