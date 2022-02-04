@@ -7,9 +7,10 @@ from decouple import config
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from models.models import ClothingItem, Rule, Graph
 from helpers.helpers import get_in_quote, get_piece_score
-from helpers.outfit_formatter import format_outfit
+from helpers.outfit_formatter import format_outfit, weather_appropriate
 
 API_KEY: str = config("WEATHER_KEY")
+WEATHER_PENALTY: int = int(config("WEATHER_PENALTY"))
 
 
 class Database:
@@ -114,16 +115,17 @@ class Database:
         """
         pass
 
-    def filter_outfits(
-        self,
-        outfits: list[list[ClothingItem]],
-        top_k: int,
-    ) -> list[list[ClothingItem]]:
+    def filter_outfits(self, outfits: list[list[ClothingItem]], top_k: int,
+                       weather: float) -> list[list[ClothingItem]]:
         """
         Filters out by outfits by the rules determined by ruleset.txt
 
         :param outfits: the outfits generated in the graph structure
         :param top_k: the top 'n' fits calculated by the rules
+        :param weather: degrees Fahrenheit
+
+        Currently - if the weather is above 45 (considered Warm)
+        If the weather is below 45 (considered Cold)
 
         :return: top 'n' outfits
         """
@@ -140,8 +142,12 @@ class Database:
             for check in check_for:
                 score = self.rule_set[check].score_fit(fit)
                 final_score += score
-            # Find favorite items
+
             for item in fit:
+                if not weather_appropriate(item, weather):
+                    final_score -= WEATHER_PENALTY
+
+                # Evaluate for favorite items
                 if item.item_name in self.favorites:
                     final_score += self.favorites[item.item_name]
 
@@ -184,7 +190,7 @@ class Interface:
         self.g.add_all(self.db.clothing_items)
         self.g.add_connections()
 
-        self.fits = self.g.generate_fits(self.db.rule_set)
+        self.fits = self.g.generate_fits()
 
         self.print_intro()
 
@@ -215,6 +221,9 @@ class Interface:
             print(
                 "The weather could not be retrieved. Please try again later.")
 
+        print("The weather in your area is " + str(self.temperature_f) +
+              "° Fahrenheit")
+
     def get_fits(self):
         """
         Gets the outfits - Goes from best to worst
@@ -224,7 +233,7 @@ class Interface:
             input("How many would you like to retrieve for the day? "))
 
         filtered_res: list[list[ClothingItem]] = self.db.filter_outfits(
-            self.fits, number_requested)
+            self.fits, number_requested, self.temperature_f)
 
         for fit in filtered_res:
             print(format_outfit(fit))

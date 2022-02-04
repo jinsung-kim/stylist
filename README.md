@@ -16,10 +16,10 @@ I may bundle everything in a virtual environment if the packages get too large
 
 ### Main TODOS (Not in any order)
 
-1. Add a weather API to filter out by weather conditions in an area
+1. Add a weather API to filter out by weather conditions in an area (In progress)
 2. Randomize because favorite fits will always appear at the top
 3. Remember which fits were already generated and selected to filter out next time
-4. Generate an interface to make this much more presentable
+4. Generate an interface to make this much more presentable (In progress)
 
 ### Basic algorithm
 

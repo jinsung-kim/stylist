@@ -3,7 +3,7 @@ import sys
 import os
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from models.models import Graph, Node, Rule
+from models.models import Node, Rule
 
 
 class TestDataStructures(unittest.TestCase):
@@ -47,21 +47,22 @@ class TestDataStructures(unittest.TestCase):
         self.brand_rule.add_combo("Stussy,Levis,Nike", 3)
 
         self.assertEqual(
-            self.color_rule.combo_exists(["White", "Black", "White"])[0], True
-        )
+            self.color_rule.combo_exists(["White", "Black", "White"])[0], True)
         self.assertEqual(
-            self.color_rule.combo_exists(["White", "Grey", "White"])[0], False
-        )
+            self.color_rule.combo_exists(["White", "Grey", "White"])[0], False)
 
         # Combo exists check
         self.assertEqual(self.color_rule.combo_exists([])[0], False)
         self.assertEqual(self.brand_rule.combo_exists(["Stussy"])[0], False)
-        self.assertEqual(self.brand_rule.combo_exists(["Stussy,Nike,Adidas"])[0], False)
+        self.assertEqual(
+            self.brand_rule.combo_exists(["Stussy,Nike,Adidas"])[0], False)
 
         # Score checks
-        self.assertEqual(self.brand_rule.combo_exists(["Stussy", "Levis"])[1], 2)
+        self.assertEqual(
+            self.brand_rule.combo_exists(["Stussy", "Levis"])[1], 2)
         self.assertEqual(self.brand_rule.combo_exists(["Stussy"])[1], 0)
-        self.assertEqual(self.brand_rule.combo_exists(["Stussy,Levis,Adidas"])[1], 0)
+        self.assertEqual(
+            self.brand_rule.combo_exists(["Stussy,Levis,Adidas"])[1], 0)
 
 
 if __name__ == "__main__":
