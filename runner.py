@@ -144,6 +144,8 @@ class Database:
                 final_score += score
 
             for item in fit:
+                # If not weather appropriate - penalize score by however
+                # much set in the .env file
                 if not weather_appropriate(item, weather):
                     final_score -= WEATHER_PENALTY
 
@@ -224,6 +226,16 @@ class Interface:
         print("The weather in your area is " + str(self.temperature_f) +
               "° Fahrenheit")
 
+    def get_weather_description(self) -> None:
+        if (self.temperature_f < 35):
+            print("The weather is quite cold today. Recommend layering on top of suggestions.")
+        elif (self.temperature_f < 60):
+            print("It's a little chilly today.")
+        elif (self.temperature_f < 80):
+            print("It's a nice day today.")
+        else:
+            print("It's quite warm today. Dress lightly.")
+
     def get_fits(self):
         """
         Gets the outfits - Goes from best to worst
@@ -234,6 +246,9 @@ class Interface:
 
         filtered_res: list[list[ClothingItem]] = self.db.filter_outfits(
             self.fits, number_requested, self.temperature_f)
+
+        # Weather condition description
+        self.get_weather_description()
 
         for fit in filtered_res:
             print(format_outfit(fit))
@@ -248,7 +263,7 @@ def main() -> None:
     i: Interface = Interface()
     i.set_location()
     i.get_weather()
-    # i.get_fits()
+    i.get_fits()
 
 
 if __name__ == "__main__":
