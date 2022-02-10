@@ -116,7 +116,7 @@ class Database:
         pass
 
     def filter_outfits(self, outfits: list[list[ClothingItem]], top_k: int,
-                       weather: float) -> list[list[ClothingItem]]:
+                       weather: float, seen: set[list[ClothingItem]]) -> list[list[ClothingItem]]:
         """
         Filters out by outfits by the rules determined by ruleset.txt
 
@@ -161,10 +161,16 @@ class Database:
         scored.sort(key=lambda y: y[0])
         scored.reverse()
 
-        for i in range(top_k):
+        i: int = 0
+        n: int = 0 # number of retrieved
+
+        while (n < top_k):
             fit: list[ClothingItem] = scored[i][1]
-            if fit not in res:
+            fit_tuple: tuple[ClothingItem] = tuple(fit)
+            if (fit not in res) and (fit_tuple not in seen):
                 res.append(fit)
+                n += 1
+            i += 1
 
         return res
 
@@ -178,12 +184,14 @@ class Interface:
         db: Database - where the items are loaded and live
         g: Graph - the connections of the items
         fits: list[list[ClothingItem]] - all of the generated outfits
+        seen: set[list[ClothingItem]] - all of the fits already seen
         """
         self.location: str = ""
         self.temperature_f: float = -1
         self.db: Database = Database()
         self.g: Graph = Graph()
         self.fits: list[list[ClothingItem]] = []
+        self.seen: set[tuple[ClothingItem]] = set()
 
         # Load in
         self.db.load_from_txt()
@@ -219,12 +227,11 @@ class Interface:
 
         if (r.status_code == 200):
             self.temperature_f = float(r.json()["current"]["temp_f"])
+            print("The weather in your area is " + str(self.temperature_f) +
+              "° Fahrenheit")
         else:
             print(
                 "The weather could not be retrieved. Please try again later.")
-
-        print("The weather in your area is " + str(self.temperature_f) +
-              "° Fahrenheit")
 
     def get_weather_description(self) -> None:
         if (self.temperature_f < 35):
@@ -245,16 +252,19 @@ class Interface:
             input("How many would you like to retrieve for the day? "))
 
         filtered_res: list[list[ClothingItem]] = self.db.filter_outfits(
-            self.fits, number_requested, self.temperature_f)
+            self.fits, number_requested, self.temperature_f, self.seen)
 
         # Weather condition description
         self.get_weather_description()
 
         for fit in filtered_res:
             print(format_outfit(fit))
+            self.seen.add(tuple(fit))
 
         # Get more if the user is not satisfied with any of them
-
+        more: str = input("Would you like to retrieve more? [Y/n] ")
+        if ("Y" in more or "y" in more):
+            self.get_fits()
 
 def main() -> None:
     """
